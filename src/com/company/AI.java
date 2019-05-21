@@ -3,7 +3,7 @@ package com.company;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class AI {
+class AI {
 
     boolean hitResult;
     boolean taskComplete;
@@ -11,32 +11,30 @@ public class AI {
     private int targets;
     private int hitLocationX;
     private int hitLocationY;
-    private int size;
     private Point[] shotList;
     private Point[] hitList;
     private Point[] missList;
-    private ArrayList<Point> huntList = new ArrayList<Point>();
+    private ArrayList<Point> huntList = new ArrayList<>();
     private int huntCount;
     private int missCount;
     private int hitCount;
     private int huntProgress;
     private int shotCount;
 
-    public AI(int s, int t) { //initialising all variables
+    AI(int s, int t) { //initialising all variables
         hitResult = false;
         taskComplete = false;
-        size = s;
         targets = t;
         missCount = 0;
         hitCount = 0;
         huntCount = 0;
         huntProgress = 0;
-        shotList = new Point[(size*size)/2];
-        hitList = new Point[size*size];
-        missList = new Point[size*size];
+        shotList = new Point[(s * s)/2];
+        hitList = new Point[s * s];
+        missList = new Point[s * s];
         int c = 0;
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < s; i++) {
+            for (int j = 0; j < s; j++) {
                 if ((i + j) % 2 == 0){
                     shotList[c] = new Point(i,j); // filling shotList with checkerboard search pattern
                     c++;
@@ -118,7 +116,7 @@ public class AI {
     }
 
     private void logHitResult() { // saves hit data to the respective lists
-        if (hitResult == true){
+        if (hitResult){
             targets--;
             if (targets == 0){
                 taskComplete = true;
