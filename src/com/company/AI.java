@@ -35,7 +35,7 @@ class AI {
         int c = 0;
         for (int i = 0; i < s; i++) {
             for (int j = 0; j < s; j++) {
-                if ((i + j) % 2 == 0){
+                if (((i + j) & 1) == 0){
                     shotList[c] = new Point(i,j); // filling shotList with checkerboard search pattern
                     c++;
                 }
